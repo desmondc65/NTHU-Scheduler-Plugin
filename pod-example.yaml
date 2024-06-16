@@ -1,20 +1,18 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx
+  name: test-pod-high-memory
   labels:
-    podGroup: "A"
-    minAvailable: "1"
+    podGroup: "B"
 spec:
   schedulerName: my-scheduler
   containers:
-  - name: nginx
+  - name: high-memory-container
     image: nginx:1.14.2
-    ports:
-    - containerPort: 80
     resources:
       requests:
-        memory: "100Mi"
+        memory: "800Mi"  # Adjust this value based on your cluster's node capacities
       limits:
-        memory: "100Mi"
-    
+        memory: "800Mi"
+    ports:
+    - containerPort: 8080

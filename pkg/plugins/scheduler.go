@@ -75,13 +75,13 @@ func (cs *CustomScheduler) PreFilter(ctx context.Context, state *framework.Cycle
 	minAvailableStr := pod.Labels[minAvailableLabel]
 
 	minAvailable, err := strconv.Atoi(minAvailableStr)
-	if err != nil {
+	if err != nil { //error handling
 		return nil, framework.NewStatus(framework.Error, "Invalid minAvailable value")
 	}
 
 	podLister := cs.handle.SharedInformerFactory().Core().V1().Pods().Lister()
 	pods, err := podLister.List(labels.Set{groupNameLabel: groupName}.AsSelector())
-	if err != nil {
+	if err != nil { //error handling
 		return nil, framework.NewStatus(framework.Error, fmt.Sprintf("Error listing pods: %v", err))
 	}
 
@@ -117,6 +117,7 @@ func (cs *CustomScheduler) Score(ctx context.Context, state *framework.CycleStat
 	}
 
 	allocatableMemory := nodeInfo.Allocatable.Memory
+	log.Printf("Node %s's allocatable memory: %d", nodeName, allocatableMemory)
 
 	var score int64
 	if cs.scoreMode == leastMode {
