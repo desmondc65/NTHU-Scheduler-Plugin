@@ -1,4 +1,9 @@
 # Scheduler Plugin
+
+## Results
+Written report of this homework can be found in [Lab_report_k8s.pdf](./Lab_report_k8s.pdf).
+Thanks TA
+
 ## Goal
 In this assignment, you are asked to implement a custom Kubernetes scheduler and learn the following skills:
 - Use kind to create your own Kubernetes cluster.
