@@ -135,6 +135,7 @@ func (cs *CustomScheduler) NormalizeScore(ctx context.Context, state *framework.
 	// find the range of the current score and map to the valid range
 	var minScore, maxScore int64 = int64(math.MaxInt64), int64(math.MinInt64)
 
+	//Identify Minimum and Maximum Scores
 	for _, nodeScore := range scores {
 		if nodeScore.Score < minScore {
 			minScore = nodeScore.Score
