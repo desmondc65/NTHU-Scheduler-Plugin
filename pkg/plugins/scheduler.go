@@ -7,7 +7,6 @@ import (
 	"log"
 	"math"
 	"strconv"
-	"strings"
 
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/labels"
@@ -96,12 +95,6 @@ func (cs *CustomScheduler) PreFilter(ctx context.Context, state *framework.Cycle
 // PreFilterExtensions returns a PreFilterExtensions interface if the plugin implements one.
 func (cs *CustomScheduler) PreFilterExtensions() framework.PreFilterExtensions {
 	return nil
-}
-func RemoveSubstring(s, sep string) string {
-	if idx := strings.Index(s, sep); idx != -1 {
-		return s[:idx]
-	}
-	return s
 }
 
 // Score invoked at the score extension point.
